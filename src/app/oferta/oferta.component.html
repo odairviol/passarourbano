@@ -1,9 +1,17 @@
 <div class="container">
-  <div class="oferta" *ngIf="oferta !== undefined" >
-
+  <div class="oferta" *ngIf="oferta !== undefined">
+    <!--
     <div class="row">
       <div class="col">
-        <h4>{{oferta.titulo}} - {{oferta.descricao_oferta}}</h4>
+        <a [routerLink]="['/oferta', 1]">Oferta 1</a>
+        <a [routerLink]="['/oferta', 3]">Oferta 3</a>
+        <a [routerLink]="['/oferta', 6]">Oferta 6</a>
+      </div>
+    </div>
+    -->
+    <div class="row">
+      <div class="col">
+        <h4>{{ oferta.descricao_oferta }}</h4>
       </div>
     </div>
 
@@ -14,7 +22,7 @@
         </div>
 
         <div class="thumbnails">
-          <img  *ngFor="let imagem of oferta.imagens" [src]="imagem.url" />
+          <img *ngFor="let imagem of oferta.imagens" [src]="imagem.url" />
         </div>
       </div>
 
@@ -43,15 +51,15 @@
     </div>
 
   </div>
-
+  
   <div class="row" style="margin-bottom: 25px; margin-bottom: 150px">
     <div class="col">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" routerLinkActive="" routerLink="como-usar" role="tab" aria-expanded="true">Como usar</a>
+          <a class="nav-link active" routerLink="como-usar" data-toggle="tab" role="tab" aria-expanded="true">Como usar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" routerLink="onde-fica" role="tab">Onde fica?</a>
+          <a class="nav-link" routerLink="onde-fica" data-toggle="tab" role="tab">Onde fica?</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -59,5 +67,4 @@
       </div>
     </div>
   </div>
-  
 </div>

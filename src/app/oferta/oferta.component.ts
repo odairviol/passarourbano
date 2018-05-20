@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { OfertasService } from '../ofertas.service';
-import { Oferta } from '../shared/oferta.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router'
+import { Oferta } from '../shared/oferta.model'
+import { OfertasService } from '../ofertas.service'
 
 @Component({
   selector: 'app-oferta',
@@ -9,22 +9,33 @@ import { Oferta } from '../shared/oferta.model';
   styleUrls: ['./oferta.component.css'],
   providers: [ OfertasService ]
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, OnDestroy {
 
-  public oferta: Oferta;
+  public oferta: Oferta
 
   constructor(
-    private route: ActivatedRoute,
+    private route: ActivatedRoute, 
     private ofertasService: OfertasService
   ) { }
 
   ngOnInit() {
+
     this.route.params.subscribe((parametros: Params) => {
+
       this.ofertasService.getOfertaPorId(parametros.id)
-        .then((oferta: Oferta) => {
-          this.oferta = oferta;
-        });
-    });
+      .then(( oferta: Oferta ) => {
+        this.oferta = oferta
+        //console.log(this.oferta)
+      })  
+      
+    })
+
+      
   }
+  
+
+  ngOnDestroy() {
+  }
+  
 
 }
