@@ -57,7 +57,11 @@ class CarrinhoService {
         this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1);
       }
     }
-}
+  }
+
+  public limparCarrinho(): void {
+    this.itens = [];
+  }
 
 }
 
